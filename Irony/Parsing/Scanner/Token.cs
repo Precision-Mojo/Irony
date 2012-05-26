@@ -36,7 +36,7 @@ namespace Irony.Parsing {
   public class Token  {
     public Terminal Terminal {get; private set;} 
     public KeyTerm KeyTerm;
-    public readonly SourceLocation Location; 
+    public readonly SourceLocation Location;
     public readonly string Text;
     
     public object Value;
@@ -74,6 +74,18 @@ namespace Irony.Parsing {
 
     public int Length {
       get { return Text == null ? 0 : Text.Length; }
+    }
+
+    public SourceLocation EndLocation {
+      get {
+        int length = Length;
+        if (length == 0) return Location;
+        int pos = Location.Position + length;
+        string[] lines = Text.Split('\n');
+        int lineCount = lines.Length - 1;
+        int column = lineCount > 0 ? lines[lines.Length - 1].Length : Location.Column + length;
+        return new SourceLocation(pos, Location.Line + lineCount, column);
+      }
     }
 
     //matching opening/closing brace

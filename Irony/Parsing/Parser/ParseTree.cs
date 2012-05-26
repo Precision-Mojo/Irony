@@ -50,7 +50,7 @@ namespace Irony.Parsing {
       Term = token.Terminal;
       Precedence = Term.Precedence;
       Associativity = token.Terminal.Associativity;
-      Span = new SourceSpan(token.Location, token.Length);
+      Span = new SourceSpan(token.Location, token.EndLocation);
       IsError = token.IsError(); 
     }
 

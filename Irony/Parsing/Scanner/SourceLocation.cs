@@ -55,16 +55,16 @@ namespace Irony.Parsing {
 
   public struct SourceSpan {
     public readonly SourceLocation Location;
-    public readonly int Length;
-    public SourceSpan(SourceLocation location, int length) {
+    public readonly SourceLocation EndLocation;
+    public SourceSpan(SourceLocation location, SourceLocation endLocation) {
       Location = location;
-      Length = length;
+      EndLocation = endLocation;
     }
-    public int EndPosition {
-      get { return Location.Position + Length; }
+    public int Length {
+        get { return EndLocation.Position - Location.Position; }
     }
     public bool InRange(int position) {
-      return (position >= Location.Position && position <= EndPosition);
+      return (position >= Location.Position && position <= EndLocation.Position);
     }
 
   }
