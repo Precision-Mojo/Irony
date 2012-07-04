@@ -79,6 +79,13 @@
     <Compile Include="Ast\AstNodeConfig.cs" />
     <Compile Include="Ast\AstContext.cs" />
     <Compile Include="Ast\AstInterfaces.cs" />
+    <Compile Include="Microsoft\BigInteger.cs" />
+    <Compile Include="Microsoft\Complex64.cs" />
+    <Compile Include="Microsoft\MathResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Parsing\Parser\SpecialActionsHints\ImpliedPrecedenceHint.cs" />
     <Compile Include="Parsing\Parser\SpecialActionsHints\PrecedenceHint.cs" />
     <Compile Include="Parsing\Parser\SpecialActionsHints\PreferredActionHint.cs" />
@@ -161,6 +168,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Microsoft\MathResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MathResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CustomToolNamespace>Microsoft.Scripting.Math</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
