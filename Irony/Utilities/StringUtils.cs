@@ -31,6 +31,28 @@ namespace Irony {
       return string.Join(separator, arr);
     }
 
+    public static string JoinStrings(string separator, params Object[] values) {
+      if (values == null)
+        throw new ArgumentException("values");
+      if (values.Length == 0 || values[0] == null)
+        return string.Empty;
+      if (separator == null)
+        separator = string.Empty;
+      StringBuilder sb = new StringBuilder();
+      string str = values[0].ToString();
+      if (str != null)
+        sb.Append(str);
+      for (int i = 1; i < values.Length; ++i) {
+        sb.Append(separator);
+        if (values[i] != null) {
+          str = values[i].ToString();
+          if (str != null)
+            sb.Append(str);
+        }
+      }
+      return sb.ToString();
+    }
+
   }//class
 
   public class StringDictionary : Dictionary<string, string> { }
@@ -40,7 +62,8 @@ namespace Irony {
   // Adding case sensitivity
   public class CharHashSet : HashSet<char> {
     bool _caseSensitive;
-    public CharHashSet(bool caseSensitive = true) {
+    public CharHashSet() : this(true) { }
+    public CharHashSet(bool caseSensitive) {
       _caseSensitive = caseSensitive; 
     }
     public new void Add(char ch) {

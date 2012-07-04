@@ -297,7 +297,11 @@ namespace Irony.Parsing {
       return MakeListRule(listNonTerminal, delimiter, listMember, options | TermListOptions.StarList);
     }
 
-    protected BnfExpression MakeListRule(NonTerminal list, BnfTerm delimiter, BnfTerm listMember, TermListOptions options = TermListOptions.PlusList) {
+    protected BnfExpression MakeListRule(NonTerminal list, BnfTerm delimiter, BnfTerm listMember) {
+      return MakeListRule(list, delimiter, listMember, TermListOptions.PlusList);
+    }
+
+    protected BnfExpression MakeListRule(NonTerminal list, BnfTerm delimiter, BnfTerm listMember, TermListOptions options) {
       //If it is a star-list (allows empty), then we first build plus-list
       var isStarList = options.IsSet(TermListOptions.AllowEmpty);
       NonTerminal plusList = isStarList ? new NonTerminal(listMember.Name + "+") : list;
@@ -352,7 +356,10 @@ namespace Irony.Parsing {
     protected GrammarHint ImplyPrecedenceHere(int precedence, Associativity associativity) {
       return new ImpliedPrecedenceHint(precedence, associativity);
     }
-    protected CustomActionHint CustomActionHere(ExecuteActionMethod executeMethod, PreviewActionMethod previewMethod = null) {
+    protected CustomActionHint CustomActionHere(ExecuteActionMethod executeMethod) {
+      return CustomActionHere(executeMethod, null);
+    }
+    protected CustomActionHint CustomActionHere(ExecuteActionMethod executeMethod, PreviewActionMethod previewMethod) {
       return new CustomActionHint(executeMethod, previewMethod);
     }
 

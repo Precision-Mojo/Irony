@@ -51,7 +51,7 @@ namespace Irony.Parsing {
           _beforeTerminals.Add(Grammar.ToTerm(s));
       }
       //Build description
-      var beforeTerms = string.Join(" ", _beforeTerminals.Select(t => t.Name));
+      var beforeTerms = Strings.JoinStrings(" ", _beforeTerminals.Select(t => t.Name));
       _description = string.Format("{0} if {1} comes before {2}.", _actionType, _firstTerminal.Name, beforeTerms); 
     }
 

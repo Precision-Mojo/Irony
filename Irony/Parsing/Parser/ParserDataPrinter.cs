@@ -68,7 +68,7 @@ namespace Irony.Parsing {
     public static string PrintTerminals(LanguageData language) {
       var termList = language.GrammarData.Terminals.ToList();
       termList.Sort((x, y) => string.Compare(x.Name, y.Name));
-      var result = string.Join(Environment.NewLine, termList);
+      var result = Strings.JoinStrings(Environment.NewLine, termList);
       return result; 
     }
 

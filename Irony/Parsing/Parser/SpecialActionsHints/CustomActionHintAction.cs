@@ -25,7 +25,9 @@ namespace Irony.Parsing {
     private ExecuteActionMethod _executeMethod;
     private PreviewActionMethod _previewMethod;
 
-    public CustomActionHint(ExecuteActionMethod executeMethod, PreviewActionMethod previewMethod = null) {
+    public CustomActionHint(ExecuteActionMethod executeMethod) : this(executeMethod, null) { }
+
+    public CustomActionHint(ExecuteActionMethod executeMethod, PreviewActionMethod previewMethod) {
       _executeMethod = executeMethod;
       _previewMethod = previewMethod;
     }

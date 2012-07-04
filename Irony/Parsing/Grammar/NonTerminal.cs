@@ -125,13 +125,13 @@ namespace Irony.Parsing {
 
   public class NonTerminalList : List<NonTerminal> {
     public override string ToString() {
-      return string.Join(" ", this); 
+      return Strings.JoinStrings(" ", this); 
     }
   }
 
   public class NonTerminalSet : HashSet<NonTerminal> {
     public override string ToString() {
-      return string.Join(" ", this);
+      return Strings.JoinStrings(" ", this);
     }
   }
 

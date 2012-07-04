@@ -125,7 +125,7 @@ namespace Irony.Parsing {
     public const int ReservedWordsPriority = 900; //almost top one
  
     public static string TerminalsToString(IEnumerable<Terminal> terminals) {
-      return string.Join(" ", terminals);
+      return Strings.JoinStrings(" ", terminals);
     }
   
   }//class
