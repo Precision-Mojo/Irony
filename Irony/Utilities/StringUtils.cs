@@ -23,6 +23,44 @@ namespace Irony {
     public const string HexDigits = "1234567890aAbBcCdDeEfF";
     public const string BinaryDigits = "01";
 
+    public static string JoinStrings<T>(string separator, IEnumerable<T> values)
+    {
+      if (values == null)
+        throw new ArgumentException("values");
+      if (separator == null)
+        separator = string.Empty;
+      string result;
+      using (IEnumerator<T> enumerator = values.GetEnumerator())
+      {
+        if (enumerator.MoveNext())
+        {
+          StringBuilder sb = new StringBuilder(16);
+          if (enumerator.Current != null)
+          {
+            T value = enumerator.Current;
+            string str = value.ToString();
+            if (str != null)
+              sb.Append(str);
+          }
+          while (enumerator.MoveNext())
+          {
+            sb.Append(separator);
+            if (enumerator.Current != null)
+            {
+              T value = enumerator.Current;
+              string str = value.ToString();
+              if (str != null)
+                sb.Append(str);
+            }
+          }
+          result = sb.ToString();
+        }
+        else
+          result = string.Empty;
+      }
+      return result;
+    }
+
     public static string JoinStrings(string separator, IEnumerable<string> values) {
       StringList list = new StringList();
       list.AddRange(values);
