@@ -30,23 +30,18 @@ namespace Irony {
       if (separator == null)
         separator = string.Empty;
       string result;
-      using (IEnumerator<T> enumerator = values.GetEnumerator())
-      {
-        if (enumerator.MoveNext())
-        {
+      using (IEnumerator<T> enumerator = values.GetEnumerator()) {
+        if (enumerator.MoveNext()) {
           StringBuilder sb = new StringBuilder(16);
-          if (enumerator.Current != null)
-          {
+          if (enumerator.Current != null) {
             T value = enumerator.Current;
             string str = value.ToString();
             if (str != null)
               sb.Append(str);
           }
-          while (enumerator.MoveNext())
-          {
+          while (enumerator.MoveNext()) {
             sb.Append(separator);
-            if (enumerator.Current != null)
-            {
+            if (enumerator.Current != null) {
               T value = enumerator.Current;
               string str = value.ToString();
               if (str != null)
